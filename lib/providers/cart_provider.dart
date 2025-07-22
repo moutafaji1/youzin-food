@@ -3,7 +3,7 @@ import '../models/menu_item.dart';
 
 class CartProvider with ChangeNotifier {
   final List<CartItem> _items = [];
-  static const double deliveryFee = 10.0; // رسوم التوصيل
+  static const double deliveryFee = 10.0; // رسوم التوصيل 10 درهم
   bool _isProcessing = false; // حماية من العمليات المتعددة
 
   List<CartItem> get items => _items;

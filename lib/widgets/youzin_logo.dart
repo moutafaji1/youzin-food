@@ -61,8 +61,8 @@ class _YouzinLogoState extends State<YouzinLogo>
   Widget build(BuildContext context) {
     Widget logoWidget = Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      child: ShaderMask(
-        shaderCallback: (bounds) => const LinearGradient(
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
@@ -71,47 +71,43 @@ class _YouzinLogoState extends State<YouzinLogo>
             Color(0xFFFF8C00), // Dark Orange
           ],
           stops: [0.0, 0.5, 1.0],
-        ).createShader(bounds),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withValues(alpha: 0.3),
-                offset: const Offset(2, 2),
-                blurRadius: 6,
-                spreadRadius: 1,
-              ),
-              BoxShadow(
-                color: const Color(0xFFFFD700).withValues(alpha: 0.2),
-                offset: const Offset(-1, -1),
-                blurRadius: 4,
-                spreadRadius: 0,
-              ),
-            ],
+        ),
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.3),
+            offset: const Offset(2, 2),
+            blurRadius: 6,
+            spreadRadius: 1,
           ),
-          child: Text(
-            'YOUZIN FOOD',
-            style: TextStyle(
-              fontSize: widget.fontSize,
-              fontWeight: FontWeight.w900,
-              color: Colors.white,
-              letterSpacing: 2.0,
-              height: 1.2,
-              shadows: [
-                Shadow(
-                  offset: const Offset(1, 1),
-                  blurRadius: 3,
-                  color: Colors.black.withValues(alpha: 0.5),
-                ),
-                Shadow(
-                  offset: const Offset(-0.5, -0.5),
-                  blurRadius: 2,
-                  color: const Color(0xFFFFFF99).withValues(alpha: 0.3),
-                ),
-              ],
+          BoxShadow(
+            color: const Color(0xFFFFD700).withValues(alpha: 0.2),
+            offset: const Offset(-1, -1),
+            blurRadius: 4,
+            spreadRadius: 0,
+          ),
+        ],
+      ),
+      child: Text(
+        'YOUZIN FOOD',
+        style: TextStyle(
+          fontSize: widget.fontSize,
+          fontWeight: FontWeight.w900,
+          color: Colors.white,
+          letterSpacing: 2.0,
+          height: 1.2,
+          shadows: [
+            Shadow(
+              offset: const Offset(1, 1),
+              blurRadius: 3,
+              color: Colors.black.withValues(alpha: 0.5),
             ),
-          ),
+            Shadow(
+              offset: const Offset(-0.5, -0.5),
+              blurRadius: 2,
+              color: const Color(0xFFFFFF99).withValues(alpha: 0.3),
+            ),
+          ],
         ),
       ),
     );
@@ -164,15 +160,26 @@ class SimpleYouzinLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ShaderMask(
-      shaderCallback: (bounds) => const LinearGradient(
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-        colors: [
-          Color(0xFFFFD700), // Gold
-          Color(0xFFFF8C00), // Orange
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            Color(0xFFFFD700), // Gold
+            Color(0xFFFF8C00), // Orange
+          ],
+        ),
+        borderRadius: BorderRadius.circular(8),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.2),
+            offset: const Offset(1, 1),
+            blurRadius: 3,
+          ),
         ],
-      ).createShader(bounds),
+      ),
       child: Text(
         'YOUZIN FOOD',
         style: TextStyle(
@@ -184,7 +191,7 @@ class SimpleYouzinLogo extends StatelessWidget {
             Shadow(
               offset: const Offset(1, 1),
               blurRadius: 2,
-              color: Colors.black.withValues(alpha: 0.3),
+              color: Colors.black.withValues(alpha: 0.5),
             ),
           ],
         ),
@@ -200,7 +207,11 @@ class ResponsiveYouzinLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final fontSize = screenWidth < 360 ? 20.0 : screenWidth < 400 ? 24.0 : 28.0;
+    final fontSize = screenWidth < 360
+        ? 20.0
+        : screenWidth < 400
+            ? 24.0
+            : 28.0;
 
     return SimpleYouzinLogo(fontSize: fontSize);
   }
