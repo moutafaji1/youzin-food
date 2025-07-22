@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/youzin_logo.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -53,16 +54,11 @@ class WelcomeScreen extends StatelessWidget {
 
               const SizedBox(height: 10),
 
-              // App Name
-              const Text(
-                'YOUZIN FOOD',
-                style: TextStyle(
-                  fontSize: 36,
-                  color: Colors.yellow,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 2,
-                ),
-                textAlign: TextAlign.center,
+              // App Name with Animated Logo
+              const YouzinLogo(
+                fontSize: 36,
+                animated: true,
+                animationDuration: Duration(milliseconds: 1500),
               ),
 
               const SizedBox(height: 10),

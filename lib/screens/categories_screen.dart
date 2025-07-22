@@ -4,6 +4,7 @@ import '../data/menu_data.dart';
 import '../providers/cart_provider.dart';
 import '../widgets/banner_slider.dart';
 import '../widgets/category_card.dart';
+import '../widgets/youzin_logo.dart';
 import 'menu_screen.dart';
 
 class CategoriesScreen extends StatelessWidget {
@@ -13,13 +14,7 @@ class CategoriesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'YOUZIN FOOD',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-          ),
-        ),
+        title: const ResponsiveYouzinLogo(),
         centerTitle: true,
         actions: [
           // Cart button
