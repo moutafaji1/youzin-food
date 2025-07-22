@@ -4,8 +4,10 @@ import '../models/menu_item.dart';
 class CartProvider with ChangeNotifier {
   final List<CartItem> _items = [];
   static const double deliveryFee = 10.0; // رسوم التوصيل
+  bool _isProcessing = false; // حماية من العمليات المتعددة
 
   List<CartItem> get items => _items;
+  bool get isProcessing => _isProcessing;
 
   int get itemCount => _items.fold(0, (sum, item) => sum + item.quantity);
 
@@ -15,30 +17,44 @@ class CartProvider with ChangeNotifier {
   double get totalAmount => subtotalAmount + deliveryFee;
 
   void addItem(MenuItem menuItem) {
-    final existingIndex = _items.indexWhere(
-      (item) => item.menuItem.id == menuItem.id,
-    );
+    if (_isProcessing) return; // منع العمليات المتعددة
 
-    if (existingIndex >= 0) {
-      _items[existingIndex].quantity++;
-    } else {
-      _items.add(CartItem(menuItem: menuItem));
+    _isProcessing = true;
+    try {
+      final existingIndex = _items.indexWhere(
+        (item) => item.menuItem.id == menuItem.id,
+      );
+
+      if (existingIndex >= 0) {
+        _items[existingIndex].quantity++;
+      } else {
+        _items.add(CartItem(menuItem: menuItem));
+      }
+      notifyListeners();
+    } finally {
+      _isProcessing = false;
     }
-    notifyListeners();
   }
 
   void removeItem(String menuItemId) {
-    final existingIndex = _items.indexWhere(
-      (item) => item.menuItem.id == menuItemId,
-    );
+    if (_isProcessing) return; // منع العمليات المتعددة
 
-    if (existingIndex >= 0) {
-      if (_items[existingIndex].quantity > 1) {
-        _items[existingIndex].quantity--;
-      } else {
-        _items.removeAt(existingIndex);
+    _isProcessing = true;
+    try {
+      final existingIndex = _items.indexWhere(
+        (item) => item.menuItem.id == menuItemId,
+      );
+
+      if (existingIndex >= 0) {
+        if (_items[existingIndex].quantity > 1) {
+          _items[existingIndex].quantity--;
+        } else {
+          _items.removeAt(existingIndex);
+        }
+        notifyListeners();
       }
-      notifyListeners();
+    } finally {
+      _isProcessing = false;
     }
   }
 
