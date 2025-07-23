@@ -105,7 +105,7 @@ class MenuData {
       id: 'sauces',
       name: 'SAUCES',
       nameArabic: 'صلصات',
-      imagePath: 'assets/images/categories/sauce.png.png',
+      imagePath: 'assets/images/categories/sauces.png.png',
       color: 'red',
     ),
   ];
