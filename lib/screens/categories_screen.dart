@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../data/menu_data.dart';
 import '../providers/cart_provider.dart';
 import '../widgets/banner_slider.dart';
@@ -17,6 +18,22 @@ class CategoriesScreen extends StatelessWidget {
         title: const ResponsiveYouzinLogo(),
         centerTitle: true,
         actions: [
+          // Instagram button
+          IconButton(
+            icon: const Icon(
+              Icons.camera_alt,
+              color: Color(0xFFFFB800),
+            ),
+            onPressed: () async {
+              final Uri instagramUrl =
+                  Uri.parse('https://www.instagram.com/youzin_food/');
+              if (await canLaunchUrl(instagramUrl)) {
+                await launchUrl(instagramUrl,
+                    mode: LaunchMode.externalApplication);
+              }
+            },
+            tooltip: 'تابعنا على Instagram',
+          ),
           // Cart button
           Consumer<CartProvider>(
             builder: (context, cart, child) {
