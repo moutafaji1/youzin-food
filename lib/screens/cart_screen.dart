@@ -8,15 +8,19 @@ class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
 
   Future<void> _sendToWhatsApp(String message) async {
-    const phoneNumber =
-        '+212123456789'; // Replace with actual restaurant phone number
+    const phoneNumber = '+212777149406'; // رقم YOUZIN FOOD
     final encodedMessage = Uri.encodeComponent(message);
     final whatsappUrl = 'https://wa.me/$phoneNumber?text=$encodedMessage';
 
-    if (await canLaunchUrl(Uri.parse(whatsappUrl))) {
-      await launchUrl(Uri.parse(whatsappUrl));
-    } else {
-      throw 'Could not launch WhatsApp';
+    try {
+      final Uri uri = Uri.parse(whatsappUrl);
+      if (await canLaunchUrl(uri)) {
+        await launchUrl(uri, mode: LaunchMode.externalApplication);
+      } else {
+        await launchUrl(uri, mode: LaunchMode.platformDefault);
+      }
+    } catch (e) {
+      throw 'لا يمكن فتح واتساب';
     }
   }
 
@@ -352,18 +356,31 @@ class CartScreen extends StatelessWidget {
                           }
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.green,
+                          backgroundColor:
+                              const Color(0xFF25D366), // لون واتساب الأخضر
                           foregroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
                           ),
+                          elevation: 3,
+                          shadowColor: Colors.black.withValues(alpha: 0.3),
                         ),
-                        child: const Text(
-                          'Envoyer au WhatsApp',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.send,
+                              size: 20,
+                            ),
+                            SizedBox(width: 8),
+                            Text(
+                              'إرسال الطلب عبر واتساب',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
