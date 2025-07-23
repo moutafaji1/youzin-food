@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import '../data/menu_data.dart';
 import '../providers/cart_provider.dart';
 import '../widgets/banner_slider.dart';
-import '../widgets/category_card.dart';
+import '../widgets/simple_category_card.dart';
 import '../widgets/youzin_logo.dart';
 import 'menu_screen.dart';
 
@@ -88,7 +88,7 @@ class CategoriesScreen extends StatelessWidget {
                 itemCount: MenuData.categories.length,
                 itemBuilder: (context, index) {
                   final category = MenuData.categories[index];
-                  return CategoryCard(
+                  return SimpleCategoryCard(
                     category: category,
                     onTap: () {
                       Navigator.push(
