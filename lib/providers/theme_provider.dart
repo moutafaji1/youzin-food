@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../theme/dark_theme.dart';
 
 class ThemeProvider with ChangeNotifier {
-  // Always use light theme
-  ThemeData get currentTheme => lightTheme;
+  // Always use dark theme for modern look
+  ThemeData get currentTheme => DarkTheme.darkTheme;
 
-  // Set system UI overlay style for light theme
+  // Set system UI overlay style for dark theme
   void initializeTheme() {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
   }
 
   // Light Theme

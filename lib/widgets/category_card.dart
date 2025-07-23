@@ -38,14 +38,24 @@ class _CategoryCardState extends State<CategoryCard> {
       onTap: _handleTap,
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: const Color(0xFF2D2D2D), // لون البطاقة الداكن
           borderRadius: BorderRadius.circular(16),
+          border: Border.all(
+            color: const Color(0xFF3A3A3A), // حدود خفيفة
+            width: 1,
+          ),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withValues(alpha: 0.1),
+              color: Colors.black.withValues(alpha: 0.3),
               spreadRadius: 1,
               blurRadius: 8,
-              offset: const Offset(0, 2),
+              offset: const Offset(0, 4),
+            ),
+            BoxShadow(
+              color: const Color(0xFFFFB800).withValues(alpha: 0.1),
+              spreadRadius: 0,
+              blurRadius: 12,
+              offset: const Offset(0, 0),
             ),
           ],
         ),
@@ -136,7 +146,7 @@ class _CategoryCardState extends State<CategoryCard> {
               style: const TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
-                color: Colors.black87,
+                color: Color(0xFFFFFFFF), // نص أبيض
               ),
               textAlign: TextAlign.center,
               maxLines: 1,
@@ -148,7 +158,7 @@ class _CategoryCardState extends State<CategoryCard> {
               widget.category.nameArabic,
               style: const TextStyle(
                 fontSize: 12,
-                color: Colors.black54,
+                color: Color(0xFFB3B3B3), // نص رمادي فاتح
               ),
               textAlign: TextAlign.center,
               maxLines: 1,

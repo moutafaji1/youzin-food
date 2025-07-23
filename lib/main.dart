@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'providers/cart_provider.dart';
-import 'providers/theme_provider.dart';
 import 'screens/welcome_screen.dart';
 import 'screens/categories_screen.dart';
-
 import 'screens/cart_screen.dart';
+import 'theme/dark_theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,23 +15,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (context) => CartProvider()),
-        ChangeNotifierProvider(create: (context) => ThemeProvider()),
-      ],
-      child: Consumer<ThemeProvider>(
-        builder: (context, themeProvider, child) {
-          return MaterialApp(
-            title: 'YouZin Food',
-            debugShowCheckedModeBanner: false,
-            theme: ThemeProvider.lightTheme,
-            home: const WelcomeScreen(),
-            routes: {
-              '/categories': (context) => const CategoriesScreen(),
-              '/cart': (context) => const CartScreen(),
-            },
-          );
+    return ChangeNotifierProvider(
+      create: (context) => CartProvider(),
+      child: MaterialApp(
+        title: 'YouZin Food',
+        debugShowCheckedModeBanner: false,
+        theme: DarkTheme.darkTheme,
+        darkTheme: DarkTheme.darkTheme,
+        themeMode: ThemeMode.dark,
+        home: const WelcomeScreen(),
+        routes: {
+          '/categories': (context) => const CategoriesScreen(),
+          '/cart': (context) => const CartScreen(),
         },
       ),
     );

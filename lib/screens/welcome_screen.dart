@@ -87,12 +87,14 @@ class WelcomeScreen extends StatelessWidget {
                       Navigator.pushReplacementNamed(context, '/categories');
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.yellow,
-                      foregroundColor: const Color(0xFF4A90E2),
+                      backgroundColor: const Color(0xFFFFB800),
+                      foregroundColor: Colors.black,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
-                      elevation: 0,
+                      elevation: 8,
+                      shadowColor:
+                          const Color(0xFFFFB800).withValues(alpha: 0.3),
                     ),
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.center,

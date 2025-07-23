@@ -50,7 +50,7 @@ class CartScreen extends StatelessWidget {
                   const Icon(
                     Icons.shopping_cart_outlined,
                     size: 80,
-                    color: Colors.grey,
+                    color: Color(0xFF8A8A8A),
                   ),
                   const SizedBox(height: 16),
                   Text(
@@ -120,7 +120,7 @@ class CartScreen extends StatelessWidget {
                                     style: const TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.orange,
+                                      color: Color(0xFFFFB800),
                                     ),
                                   ),
                                 ],
@@ -134,7 +134,13 @@ class CartScreen extends StatelessWidget {
                                     cart.removeItem(cartItem.menuItem.id);
                                   },
                                   icon: const Icon(Icons.remove_circle),
-                                  color: Colors.red,
+                                  color: const Color(0xFFFF5252),
+                                  style: IconButton.styleFrom(
+                                    backgroundColor: const Color(0xFF2D2D2D),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                  ),
                                 ),
                                 Text(
                                   '${cartItem.quantity}',
@@ -148,14 +154,26 @@ class CartScreen extends StatelessWidget {
                                     cart.addItem(cartItem.menuItem);
                                   },
                                   icon: const Icon(Icons.add_circle),
-                                  color: Colors.green,
+                                  color: const Color(0xFFFFB800),
+                                  style: IconButton.styleFrom(
+                                    backgroundColor: const Color(0xFF2D2D2D),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                  ),
                                 ),
                                 IconButton(
                                   onPressed: () {
                                     cart.deleteItem(cartItem.menuItem.id);
                                   },
                                   icon: const Icon(Icons.delete),
-                                  color: Colors.red,
+                                  color: const Color(0xFFFF5252),
+                                  style: IconButton.styleFrom(
+                                    backgroundColor: const Color(0xFF2D2D2D),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                  ),
                                 ),
                               ],
                             ),
@@ -292,20 +310,20 @@ class CartScreen extends StatelessWidget {
                           width: 1,
                         ),
                       ),
-                      child: Row(
+                      child: const Row(
                         children: [
-                          const Icon(
+                          Icon(
                             Icons.info_outline,
-                            color: Colors.blue,
+                            color: Color(0xFFFFB800),
                             size: 20,
                           ),
-                          const SizedBox(width: 8),
+                          SizedBox(width: 8),
                           Expanded(
                             child: Text(
                               'رسوم التوصيل 10 درهم ثابتة لجميع الطلبات',
                               style: TextStyle(
                                 fontSize: 14,
-                                color: Colors.blue[800],
+                                color: Color(0xFFFFB800),
                                 fontWeight: FontWeight.w500,
                               ),
                             ),

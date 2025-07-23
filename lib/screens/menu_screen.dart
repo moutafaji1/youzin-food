@@ -70,7 +70,7 @@ class MenuScreen extends StatelessWidget {
           ? const Center(
               child: Text(
                 'لا توجد عناصر في هذه الفئة',
-                style: TextStyle(fontSize: 18, color: Colors.grey),
+                style: TextStyle(fontSize: 18, color: Color(0xFFB3B3B3)),
               ),
             )
           : ListView.builder(
@@ -121,7 +121,8 @@ class MenuScreen extends StatelessWidget {
                                 style: const TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.orange,
+                                  color:
+                                      Color(0xFFFFB800), // لون التمييز الذهبي
                                 ),
                               ),
                             ],
@@ -149,11 +150,12 @@ class MenuScreen extends StatelessWidget {
                                   );
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.blue,
-                                  foregroundColor: Colors.white,
+                                  backgroundColor: const Color(0xFFFFB800),
+                                  foregroundColor: Colors.black,
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8),
+                                    borderRadius: BorderRadius.circular(12),
                                   ),
+                                  elevation: 4,
                                 ),
                                 child: const Text('إضافة'),
                               );
@@ -166,7 +168,13 @@ class MenuScreen extends StatelessWidget {
                                       cart.removeItem(item.id);
                                     },
                                     icon: const Icon(Icons.remove_circle),
-                                    color: Colors.red,
+                                    color: const Color(0xFFFF5252),
+                                    style: IconButton.styleFrom(
+                                      backgroundColor: const Color(0xFF2D2D2D),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                    ),
                                   ),
                                   Text(
                                     '$quantity',
@@ -180,7 +188,13 @@ class MenuScreen extends StatelessWidget {
                                       cart.addItem(item);
                                     },
                                     icon: const Icon(Icons.add_circle),
-                                    color: Colors.green,
+                                    color: const Color(0xFFFFB800),
+                                    style: IconButton.styleFrom(
+                                      backgroundColor: const Color(0xFF2D2D2D),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                    ),
                                   ),
                                 ],
                               );
