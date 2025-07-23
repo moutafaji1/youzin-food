@@ -87,6 +87,27 @@ class MenuData {
       imagePath: 'assets/images/categories/paninis.png.png',
       color: 'brown',
     ),
+    FoodCategory(
+      id: 'pastas',
+      name: 'PASTAS',
+      nameArabic: 'باستا',
+      imagePath: 'assets/images/categories/pasta.png.png',
+      color: 'orange',
+    ),
+    FoodCategory(
+      id: 'salades',
+      name: 'SALADES',
+      nameArabic: 'سلطات',
+      imagePath: 'assets/images/categories/salad.png.png',
+      color: 'green',
+    ),
+    FoodCategory(
+      id: 'sauces',
+      name: 'SAUCES',
+      nameArabic: 'صلصات',
+      imagePath: 'assets/images/categories/sauce.png.png',
+      color: 'red',
+    ),
   ];
 
   static List<MenuItem> menuItems = [
@@ -679,6 +700,103 @@ class MenuData {
       nameArabic: 'مختلط',
       price: 23,
       category: 'paninis',
+    ),
+
+    // PASTAS
+    MenuItem(
+      id: 'pa1',
+      name: 'Bolognaise',
+      nameArabic: 'بولونيز',
+      price: 30,
+      category: 'pastas',
+    ),
+    MenuItem(
+      id: 'pa2',
+      name: 'Fruit de Mer',
+      nameArabic: 'ثمار البحر',
+      price: 40,
+      category: 'pastas',
+    ),
+    MenuItem(
+      id: 'pa3',
+      name: 'Poulet',
+      nameArabic: 'دجاج',
+      price: 30,
+      category: 'pastas',
+    ),
+    MenuItem(
+      id: 'pa4',
+      name: 'Thon',
+      nameArabic: 'تونة',
+      price: 30,
+      category: 'pastas',
+    ),
+    MenuItem(
+      id: 'pa5',
+      name: 'Carbonara',
+      nameArabic: 'كاربونارا',
+      price: 30,
+      category: 'pastas',
+    ),
+
+    // SALADES
+    MenuItem(
+      id: 'sa1',
+      name: 'Niçoise',
+      nameArabic: 'نيسواز',
+      price: 25,
+      category: 'salades',
+    ),
+    MenuItem(
+      id: 'sa2',
+      name: 'Poulet',
+      nameArabic: 'دجاج',
+      price: 20,
+      category: 'salades',
+    ),
+    MenuItem(
+      id: 'sa3',
+      name: 'Thon',
+      nameArabic: 'تونة',
+      price: 20,
+      category: 'salades',
+    ),
+    MenuItem(
+      id: 'sa4',
+      name: 'Nuggets',
+      nameArabic: 'ناغتس',
+      price: 20,
+      category: 'salades',
+    ),
+    MenuItem(
+      id: 'sa5',
+      name: 'O-Fish',
+      nameArabic: 'أو-فيش',
+      price: 30,
+      category: 'salades',
+    ),
+
+    // SAUCES
+    MenuItem(
+      id: 'sc1',
+      name: 'Chessy',
+      nameArabic: 'تشيزي',
+      price: 3,
+      category: 'sauces',
+    ),
+    MenuItem(
+      id: 'sc2',
+      name: 'Algérienne',
+      nameArabic: 'جزائرية',
+      price: 2,
+      category: 'sauces',
+    ),
+    MenuItem(
+      id: 'sc3',
+      name: 'Biggy',
+      nameArabic: 'بيغي',
+      price: 2,
+      category: 'sauces',
     ),
   ];
 
