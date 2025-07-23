@@ -12,7 +12,8 @@ class WhatsAppButton extends StatelessWidget {
   const WhatsAppButton({
     super.key,
     this.phoneNumber = '+212777149406', // الرقم الافتراضي
-    this.message = 'السلام عليكم، أريد أن أطلب من مطعم YOUZIN FOOD', // الرسالة الافتراضية
+    this.message =
+        'السلام عليكم، أريد أن أطلب من مطعم YOUZIN FOOD', // الرسالة الافتراضية
     this.buttonText = 'إرسال عبر واتساب',
     this.buttonColor,
     this.textColor,
@@ -22,7 +23,7 @@ class WhatsAppButton extends StatelessWidget {
   Future<void> _sendWhatsAppMessage() async {
     // تنظيف الرقم من أي رموز غير مرغوب فيها
     String cleanNumber = phoneNumber.replaceAll(RegExp(r'[^\d+]'), '');
-    
+
     // التأكد من أن الرقم يبدأ بـ +
     if (!cleanNumber.startsWith('+')) {
       cleanNumber = '+$cleanNumber';
@@ -30,13 +31,13 @@ class WhatsAppButton extends StatelessWidget {
 
     // ترميز الرسالة للـ URL
     String encodedMessage = Uri.encodeComponent(message);
-    
+
     // إنشاء رابط واتساب
     String whatsappUrl = 'https://wa.me/$cleanNumber?text=$encodedMessage';
-    
+
     try {
       final Uri uri = Uri.parse(whatsappUrl);
-      
+
       // التحقق من إمكانية فتح الرابط
       if (await canLaunchUrl(uri)) {
         await launchUrl(
@@ -64,7 +65,8 @@ class WhatsAppButton extends StatelessWidget {
       child: ElevatedButton.icon(
         onPressed: _sendWhatsAppMessage,
         style: ElevatedButton.styleFrom(
-          backgroundColor: buttonColor ?? const Color(0xFF25D366), // لون واتساب الأخضر
+          backgroundColor:
+              buttonColor ?? const Color(0xFF25D366), // لون واتساب الأخضر
           foregroundColor: textColor ?? Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(25),
@@ -119,9 +121,9 @@ class WhatsAppExample extends StatelessWidget {
           children: [
             // زر واتساب بالإعدادات الافتراضية
             const WhatsAppButton(),
-            
+
             const SizedBox(height: 20),
-            
+
             // زر واتساب مخصص
             WhatsAppButton(
               phoneNumber: '+212777149406',
@@ -131,11 +133,11 @@ class WhatsAppExample extends StatelessWidget {
               textColor: Colors.black,
               icon: Icons.restaurant,
             ),
-            
+
             const SizedBox(height: 20),
-            
+
             // زر واتساب آخر مع رسالة مختلفة
-            WhatsAppButton(
+            const WhatsAppButton(
               phoneNumber: '+212777149406',
               message: 'مرحباً، أريد الاستفسار عن قائمة الطعام في YOUZIN FOOD',
               buttonText: 'استفسار عن القائمة',

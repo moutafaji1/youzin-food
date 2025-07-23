@@ -6,7 +6,7 @@ class SimpleWhatsAppExample extends StatelessWidget {
 
   // 📱 الرقم (قابل للتعديل)
   static const String phoneNumber = '+212777149406';
-  
+
   // 💬 الرسالة (قابلة للتعديل)
   static const String message = '''السلام عليكم ورحمة الله وبركاته
 
@@ -34,7 +34,7 @@ class SimpleWhatsAppExample extends StatelessWidget {
 
       // ترميز الرسالة
       String encodedMessage = Uri.encodeComponent(message);
-      
+
       // رابط واتساب
       String whatsappUrl = 'https://wa.me/$cleanNumber?text=$encodedMessage';
       final Uri uri = Uri.parse(whatsappUrl);
@@ -77,9 +77,9 @@ class SimpleWhatsAppExample extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            
+
             const SizedBox(height: 30),
-            
+
             // النص التوضيحي
             const Text(
               'اضغط على الزر لإرسال طلبك عبر واتساب',
@@ -90,9 +90,9 @@ class SimpleWhatsAppExample extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-            
+
             const SizedBox(height: 40),
-            
+
             // 🔥 الزر الرئيسي
             SizedBox(
               width: double.infinity,
@@ -121,9 +121,9 @@ class SimpleWhatsAppExample extends StatelessWidget {
                 ),
               ),
             ),
-            
+
             const SizedBox(height: 20),
-            
+
             // معلومات إضافية
             Container(
               padding: const EdgeInsets.all(15),
@@ -132,18 +132,18 @@ class SimpleWhatsAppExample extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(color: Colors.grey[300]!),
               ),
-              child: Column(
+              child: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '📱 الرقم: $phoneNumber',
-                    style: const TextStyle(
+                    '📱 الرقم: +212777149406',
+                    style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  const SizedBox(height: 5),
-                  const Text(
+                  SizedBox(height: 5),
+                  Text(
                     '💬 سيتم فتح واتساب مع رسالة جاهزة',
                     style: TextStyle(
                       fontSize: 14,
@@ -164,7 +164,7 @@ class SimpleWhatsAppExample extends StatelessWidget {
 class QuickWhatsAppButton extends StatelessWidget {
   final String? customMessage;
   final String? customPhone;
-  
+
   const QuickWhatsAppButton({
     super.key,
     this.customMessage,
@@ -174,13 +174,13 @@ class QuickWhatsAppButton extends StatelessWidget {
   Future<void> _quickSend() async {
     String phone = customPhone ?? '+212777149406';
     String msg = customMessage ?? 'السلام عليكم، أريد أن أطلب من YOUZIN FOOD';
-    
+
     String cleanNumber = phone.replaceAll(RegExp(r'[^\d+]'), '');
     if (!cleanNumber.startsWith('+')) cleanNumber = '+$cleanNumber';
-    
+
     String encodedMessage = Uri.encodeComponent(msg);
     String whatsappUrl = 'https://wa.me/$cleanNumber?text=$encodedMessage';
-    
+
     final Uri uri = Uri.parse(whatsappUrl);
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri, mode: LaunchMode.externalApplication);
