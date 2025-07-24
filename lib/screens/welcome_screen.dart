@@ -17,54 +17,28 @@ class WelcomeScreen extends StatelessWidget {
             children: [
               const Spacer(flex: 2),
 
-              // Logo with glow effect
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.white.withValues(alpha: 0.3),
-                      spreadRadius: 8,
-                      blurRadius: 20,
-                      offset: const Offset(0, 0),
-                    ),
-                    BoxShadow(
+              // Logo - clean and bigger
+              Image.asset(
+                'assets/images/intro app/logo intro.png',
+                width: 280,
+                height: 280,
+                fit: BoxFit.contain,
+                errorBuilder: (context, error, stackTrace) {
+                  // Fallback if image not found
+                  return Container(
+                    width: 280,
+                    height: 280,
+                    decoration: BoxDecoration(
                       color: Colors.white.withValues(alpha: 0.1),
-                      spreadRadius: 15,
-                      blurRadius: 40,
-                      offset: const Offset(0, 0),
+                      borderRadius: BorderRadius.circular(20),
                     ),
-                  ],
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: Image.asset(
-                    'assets/images/intro app/logo intro.png',
-                    width: 200,
-                    height: 200,
-                    fit: BoxFit.contain,
-                    errorBuilder: (context, error, stackTrace) {
-                      // Fallback if image not found
-                      return Container(
-                        width: 200,
-                        height: 200,
-                        decoration: BoxDecoration(
-                          color: Colors.white.withValues(alpha: 0.1),
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(
-                            color: Colors.white.withValues(alpha: 0.3),
-                            width: 2,
-                          ),
-                        ),
-                        child: const Icon(
-                          Icons.restaurant_menu,
-                          size: 80,
-                          color: Colors.white,
-                        ),
-                      );
-                    },
-                  ),
-                ),
+                    child: const Icon(
+                      Icons.restaurant_menu,
+                      size: 120,
+                      color: Colors.white,
+                    ),
+                  );
+                },
               ),
 
               const Spacer(flex: 2),
