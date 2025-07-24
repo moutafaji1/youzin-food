@@ -30,6 +30,7 @@ flutter:
     - assets/images/banners/
     - assets/images/categories/
     - assets/images/logo/
+    - assets/images/intro app/
     - assets/icons/
 
 flutter_launcher_icons:

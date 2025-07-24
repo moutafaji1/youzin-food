@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../widgets/youzin_logo.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -10,14 +9,7 @@ class WelcomeScreen extends StatelessWidget {
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color(0xFF4A90E2),
-              Color(0xFF357ABD),
-            ],
-          ),
+          color: Color(0xFFFF2605), // Solid red-orange background
         ),
         child: SafeArea(
           child: Column(
@@ -25,54 +17,54 @@ class WelcomeScreen extends StatelessWidget {
             children: [
               const Spacer(flex: 2),
 
-              // Chef Hat Icon
+              // Logo with glow effect
               Container(
-                width: 120,
-                height: 120,
                 decoration: BoxDecoration(
-                  color: Colors.yellow,
                   borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.white.withValues(alpha: 0.3),
+                      spreadRadius: 8,
+                      blurRadius: 20,
+                      offset: const Offset(0, 0),
+                    ),
+                    BoxShadow(
+                      color: Colors.white.withValues(alpha: 0.1),
+                      spreadRadius: 15,
+                      blurRadius: 40,
+                      offset: const Offset(0, 0),
+                    ),
+                  ],
                 ),
-                child: const Icon(
-                  Icons.restaurant_menu,
-                  size: 60,
-                  color: Color(0xFF4A90E2),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.asset(
+                    'assets/images/intro app/logo intro.png',
+                    width: 200,
+                    height: 200,
+                    fit: BoxFit.contain,
+                    errorBuilder: (context, error, stackTrace) {
+                      // Fallback if image not found
+                      return Container(
+                        width: 200,
+                        height: 200,
+                        decoration: BoxDecoration(
+                          color: Colors.white.withValues(alpha: 0.1),
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(
+                            color: Colors.white.withValues(alpha: 0.3),
+                            width: 2,
+                          ),
+                        ),
+                        child: const Icon(
+                          Icons.restaurant_menu,
+                          size: 80,
+                          color: Colors.white,
+                        ),
+                      );
+                    },
+                  ),
                 ),
-              ),
-
-              const SizedBox(height: 40),
-
-              // Arabic Welcome Text
-              const Text(
-                'مرحباً بك في',
-                style: TextStyle(
-                  fontSize: 24,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w300,
-                ),
-                textAlign: TextAlign.center,
-              ),
-
-              const SizedBox(height: 10),
-
-              // App Name with Animated Logo
-              const YouzinLogo(
-                fontSize: 36,
-                animated: true,
-                animationDuration: Duration(milliseconds: 1500),
-              ),
-
-              const SizedBox(height: 10),
-
-              // Arabic Subtitle
-              const Text(
-                'أطعم لذيذة وخدمة مميزة',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.white70,
-                  fontWeight: FontWeight.w300,
-                ),
-                textAlign: TextAlign.center,
               ),
 
               const Spacer(flex: 2),
