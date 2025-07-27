@@ -15,12 +15,8 @@ class CategoriesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Padding(
-          padding: EdgeInsets.only(left: 8.0),
-          child: ResponsiveYouzinLogo(),
-        ),
-        leadingWidth: 120,
-        centerTitle: false,
+        title: const ResponsiveYouzinLogo(),
+        centerTitle: true,
         actions: [
           // Instagram button
           IconButton(
